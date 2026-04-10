@@ -1,0 +1,29 @@
+import java.security.SecureRandom;
+import java.util.Scanner;
+
+public class GeradorSenha {
+
+    private static final String MAIUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String NUMEROS = "0123456789";
+    private static final String ESPECIAIS = "!@#$%&*()-_=+<>?";
+
+    private static final String TODOS = MAIUSCULAS + MINUSCULAS + NUMEROS + ESPECIAIS;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        SecureRandom random = new SecureRandom();
+
+        System.out.print("Digite o tamanho da senha: ");
+        int tamanho = scanner.nextInt();
+
+        StringBuilder senha = new StringBuilder();
+
+        for (int i = 0; i < tamanho; i++) {
+            int index = random.nextInt(TODOS.length());
+            senha.append(TODOS.charAt(index));
+        }
+
+        System.out.println("Senha gerada: " + senha.toString());
+    }
+}
